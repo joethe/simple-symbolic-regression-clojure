@@ -9,11 +9,13 @@ do
   #echo ""
   #echo "Begining run $i ... "
   #echo "--------------------"
-  { time { cat ~/Desktop/bigRand.txt > /dev/null ; } } &>> $1
+  { time { lein run > /dev/null ; } } &>> $1
   echo " " >> $1
 done
 
 sed -i 's/[m\.]/ /g;s/s$//g' $1
+#sed -i 's/\s0{1,2}/ /g' $1
+
 
 function take_average {
 
@@ -30,7 +32,7 @@ function take_average {
   done 
 
   MILSUM=0
-  for i in $(grep $2 $1 | awk '{print $4}')
+  for i in $(grep $2 $1 | awk '{print $4}' | sed 's/\(^0\|^00\)//g')
   do
     MILSUM=$((MILSUM + $i))
   done
