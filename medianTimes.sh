@@ -2,14 +2,14 @@
 
 #takes output file name, runs COMMAND NUM_RUNS times and gets median.
 
-COMMAND="cat ~/Downloads/OpenHatchLogoTall.png > /dev/null"
-#COMMAND="lein run > /dev/null"
+#COMMAND="cat ~/Downloads/OpenHatchLogoTall.png > /dev/null"
+COMMAND="lein run > /dev/null"
 NUM_RUNS=5
 
 ##### RUN AND TIME #####
 for i in $(seq 1 $NUM_RUNS)
 do 
-  { time { $COMMAND ; } } &>> $1
+  { time { eval $COMMAND; } } &>> $1
   echo " " >> $1
 done
 
