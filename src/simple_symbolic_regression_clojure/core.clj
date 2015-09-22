@@ -32,7 +32,7 @@
   "Run the system against the Sine rubrics"
   [& args]
   (dorun
-   (map print-generation-report
+   (pmap print-generation-report
         (take 100 (future-history initial-sine-population 0.05 sine-rubrics))))
   ; The shutdown-agents call is necessary to make sure that things like "lein run"
   ; terminate when they're done. Otherwise they can hang around waiting for other

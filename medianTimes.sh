@@ -11,6 +11,8 @@ for i in $(seq 1 $NUM_RUNS)
 do 
   { time { eval $COMMAND; } } &>> $1
   echo " " >> $1
+  DISPLAY=:0 notify-send "Run $i complete..."
+  echo "Run $i Complete..."
 done
 
 
