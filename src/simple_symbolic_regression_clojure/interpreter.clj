@@ -1,5 +1,6 @@
 (ns simple-symbolic-regression-clojure.interpreter
   (:use [clojure.math.numeric-tower])
+  (:require [clojure.core.reducers :as r])
   )
 
 ;;; Interpreter
@@ -75,5 +76,7 @@
     score-penalty))
 
 ;; Using pmap here leads to thrashing and poor performance.
+;; Using r/reduce and r/map yeilds similarly dissapointing results.
 (defn total-score-on [script rubrics]
-  (reduce + (map (partial score-on script) rubrics)))
+  ;;(reduce + (map (partial score-on script) rubrics)))
+  (r/fold + (r/map (partial score-on script) rubrics)))

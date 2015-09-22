@@ -3,7 +3,7 @@
 #takes output file name, runs COMMAND NUM_RUNS times and gets median.
 
 #COMMAND="cat ~/Downloads/OpenHatchLogoTall.png > /dev/null"
-COMMAND="lein run > /dev/null"
+COMMAND="lein run"
 NUM_RUNS=5
 
 ##### RUN AND TIME #####

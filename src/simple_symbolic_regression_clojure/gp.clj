@@ -106,7 +106,7 @@
 (defn score-population
   "takes an unscored population and returns the same ones with scores assigned"
   [population rubrics]
-  (pmap #(score-using-rubrics % rubrics) population))
+  (doall (pmap #(score-using-rubrics % rubrics) population)))
 
 
 ;;; Main evolutionary loop
